@@ -30,6 +30,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Gender</th>
                     <th scope="col">No Phone</th>
+                    <th scope="col">Profile Picture</th>
                     <th scope="col">Created On</th>
                     <th scope="col">Options</th>
                   </tr>
@@ -44,10 +45,14 @@
                     <td>{{  $row->name  }}</td>
                     <td>{{  $row->gender    }}</td>
                     <td>{{  $row->notelephone   }}</td>
+                    <td>
+                        <img src="{{ asset('/photoEmployees/'.$row->photo) }}" alt="{{  $row->photo   }}" style="width: 40px;">
+                    </td>
                     <td>{{  $row->created_at->format('D M Y') }}</td>
                     <td>
-                        <a href="/deleteDataEmployee/{{ $row->id }}" class="btn btn-danger">Delete </a>
                         <a href="/showDataEmployee/{{ $row->id  }}" class="btn btn-warning">Edit</a>
+                        <a href="#" class="btn btn-danger delete" data-id="{{ $row->id }}">Delete </a>
+                        <!--<a href="/deleteDataEmployee/{{ $row->id }}" class="btn btn-danger">Delete </a>-->
                     </td>
                   </tr>
                 </tbody>
@@ -64,11 +69,32 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        $('.delete').click(function(){
+            swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                swal("Poof! Your imaginary file has been deleted!", {
+                icon: "success",
+                });
+            } else {
+                swal("Your imaginary file is safe!");
+            }
+        });
+        })
+    </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    -->
+
   </body>
 </html>

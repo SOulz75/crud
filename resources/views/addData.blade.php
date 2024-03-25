@@ -17,7 +17,7 @@
         <div class ="row justify-content-center">
             <div class="col-8">
                 <div class="card">
-                    <form action={{route('insertData')}} method="POST">
+                    <form action={{route('insertData')}} method="POST" enctype="multipart/form-data">
 
                         @csrf
                         <div class="mb-3">
@@ -34,6 +34,10 @@
                         <div class="mb-3">
                             <label for="forNoPhone" class="form-label">Phone No</label>
                             <input type="text" name="notelephone" class="form-control" id="forNoPhone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="forProfilePicture" class="form-label">Add Profile Picture</label>
+                            <input type="file" name="photo" class="form-control" id="forProfilePicure">
                         </div>
                         <button class="btn btn-success">Submit</button>
                     </form>
