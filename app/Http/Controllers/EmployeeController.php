@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    public function index(){
-        $data = Employee::all();
+    public function index(Request $request){
+
+        if($request->has('search')){
+            $data = Employee::where('name', 'LIKE', '%'.$request->search.'%')->paginate(5);
+        }else{
+            $data = Employee::all();
+        }
         return view('datapegawai', compact('data'));
+
     }
 
     public function addData(){
@@ -43,4 +49,10 @@ class EmployeeController extends Controller
         $data->delete();
         return redirect()->route('pegawai')->with('success', 'Data has been deleted.');
     }
+
+    // public function searchDataEmployeeName($id){
+    // $data = Employee::find($id);
+    //     $data =
+
+    // }
 }
