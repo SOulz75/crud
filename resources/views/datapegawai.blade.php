@@ -20,7 +20,8 @@
             <form action="/pegawai" method="GET" enctype="multipart/form-data">
                 <label for="searchData" class="form-label">Search by name : <input type="search" class="form-control" name="search"></label>
             </form>
-            <a href="/addData" type="button" class="btn btn-success" >Add Item +</a>
+            <a href="/addData" type="button" class="btn btn-success" > Add Item + </a>
+            <a href="/exportPDF" type="button" class="btn btn-info" > Export PDF </a>
         </div>
         <div class ="row">
         {{-- @if ($message = Session::get('success'))

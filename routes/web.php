@@ -34,3 +34,6 @@ Route::post('/updateDataEmployee/{id}',[EmployeeController::class, 'updateDataEm
 
 //Delete Data
 Route::get('/deleteDataEmployee/{id}',[EmployeeController::class, 'deleteDataEmployee'])->name('deleteDataEmployee');
+
+// Export PDF
+Route::get('/exportPDF',[EmployeeController::class, 'exportPDF'])->name('exportPDF');

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+// use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
+use PDF;
 
 class EmployeeController extends Controller
 {
@@ -49,10 +51,10 @@ class EmployeeController extends Controller
         $data->delete();
         return redirect()->route('pegawai')->with('success', 'Data has been deleted.');
     }
-
-    // public function searchDataEmployeeName($id){
-    // $data = Employee::find($id);
-    //     $data =
-
-    // }
+    public function exportPDF(){
+        $data = Employee::all();
+        view()->share('data', $data );
+        $pdf = PDF::loadView('employeedetails-pdf');
+        return $pdf->download('data.pdf');
+    }
 }
