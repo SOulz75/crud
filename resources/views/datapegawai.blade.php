@@ -16,7 +16,12 @@
     <h1 class='text-center'>Data Pegawai</h1>
     <br>
     <div class="container">
-        <a href="/addData" type="button" class="btn btn-success" >Add Item +</a>
+        <div class="mb-3">
+            <form action="/pegawai" method="GET" enctype="multipart/form-data">
+                <label for="searchData" class="form-label">Search by name : <input type="search" class="form-control" name="search"></label>
+            </form>
+            <a href="/addData" type="button" class="btn btn-success" >Add Item +</a>
+        </div>
         <div class ="row">
         {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success" role="alert">
