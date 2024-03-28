@@ -45,9 +45,9 @@
                 @php
                     $i=1;
                 @endphp
-                @foreach ($data as $row)
+                @foreach ($data as  $index=> $row)
                 <tr>
-                    <th scope="row">{{ $i++ }}</th>
+                    <th scope="row">{{ $index  + $data->firstItem()}}</th>
                     <td>{{  $row->name  }}</td>
                     <td>{{  $row->gender    }}</td>
                     <td>{{  $row->notelephone   }}</td>
@@ -66,6 +66,7 @@
                 @endforeach
 
               </table>
+              {{ $data->links() }}
         </div>
     </div>
 
