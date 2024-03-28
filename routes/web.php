@@ -37,3 +37,7 @@ Route::get('/deleteDataEmployee/{id}',[EmployeeController::class, 'deleteDataEmp
 
 // Export PDF
 Route::get('/exportPDF',[EmployeeController::class, 'exportPDF'])->name('exportPDF');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

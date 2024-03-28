@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use Illuminate\Contracts\Pagination\Paginator;
 // use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use PDF;
@@ -14,7 +15,7 @@ class EmployeeController extends Controller
         if($request->has('search')){
             $data = Employee::where('name', 'LIKE', '%'.$request->search.'%')->paginate(5);
         }else{
-            $data = Employee::all();
+            $data = Employee::paginate(5);
         }
         return view('datapegawai', compact('data'));
 
