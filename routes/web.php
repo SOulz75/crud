@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
-
+use App\Models\Employee;
+use Rap2hpoutre\FastExcel\FastExcel;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +39,15 @@ Route::get('/deleteDataEmployee/{id}',[EmployeeController::class, 'deleteDataEmp
 
 // Export PDF
 Route::get('/exportPDF',[EmployeeController::class, 'exportPDF'])->name('exportPDF');
+
+// Export PDF
+//Route::get('/exportExcel',[EmployeeController::class, 'exportExcel'])->name('exportExcel');
+
+Route::get('/exportExcel', function () {
+    //$okay= Employee::all();
+    //return (new FastExcel($okay))->export('file.xlsx');
+    return (new FastExcel(Employee::all()))->download('file.xlsx');
+});
 
 Auth::routes();
 

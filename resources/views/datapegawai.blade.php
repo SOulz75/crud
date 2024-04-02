@@ -22,6 +22,7 @@
             </form>
             <a href="/addData" type="button" class="btn btn-success" > Add Item + </a>
             <a href="/exportPDF" type="button" class="btn btn-info" > Export PDF </a>
+            <a href="/exportExcel" type="button" class="btn btn-primary" > Export Excel </a>
         </div>
         <div class ="row">
         {{-- @if ($message = Session::get('success'))
