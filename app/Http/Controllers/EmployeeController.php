@@ -92,16 +92,4 @@ class EmployeeController extends Controller
         $pdf = PDF::loadView('employeedetails-pdf');
         return $pdf->download('data.pdf');
     }
-
-    //  $validator = Validator::make($request->all(),
-        // ['name'=>['required', 'string','regex:/^[^0-9]*$/'],],
-        // ['name.regex'=>['The : attribute field cannot contain numbers.'],]);
-        // if ($validator->fails()) {
-        //     // Validation failed
-        //     dd($request);
-        //     return redirect()->back()->withErrors($validator)->withInput();
-        // }
-
-
-
 }
