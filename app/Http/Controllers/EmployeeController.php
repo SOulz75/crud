@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use Illuminate\Contracts\Pagination\Paginator;
 // use Barryvdh\DomPDF\PDF;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request;;
+use Illuminate\Support\Facades\Validator;
 use PDF;
 
 class EmployeeController extends Controller
@@ -21,11 +22,42 @@ class EmployeeController extends Controller
 
     }
 
+
+
     public function addData(){
         return view('addData');
     }
     public function insertData(Request $request){
-        //
+
+        //validation
+        $this->validate($request,[
+            'name' => 'required|min:5|max:255',
+            'notelephone' => 'required|min:10|max:11',
+        ]);
+
+        // $rules = [
+        //     'name' => 'required|string|max:255', // Example validation rule for a name field
+        //     'notelephone' => 'required|string|max:11', // Example validation rule for an email field
+        //     // Add more validation rules as needed
+        // ];
+        // // Define custom error messages
+        // $messages = [
+        //     'name.required' => 'The name field is required.',
+        //     'email.required' => 'The phone number field is required.',
+        //     // Add more custom error messages as needed
+        // ];
+
+        // // Perform validation
+        // $validator = Validator::make($request->all(), $rules, $messages);
+        // // Check if validation fails
+        // if ($validator->fails()) {
+        //     // Redirect back with errors and old input
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
+
+        // Validation passed, continue with your logic
+
+
         $data = Employee::create($request->all());
 
         if($request->hasFile('photo')){
@@ -35,6 +67,8 @@ class EmployeeController extends Controller
             $data->save();
         }
         return redirect()->route('pegawai')->with('success', 'Data has been stored.');
+
+
     }
 
     public function showDataEmployee($id){
@@ -58,4 +92,16 @@ class EmployeeController extends Controller
         $pdf = PDF::loadView('employeedetails-pdf');
         return $pdf->download('data.pdf');
     }
+
+    //  $validator = Validator::make($request->all(),
+        // ['name'=>['required', 'string','regex:/^[^0-9]*$/'],],
+        // ['name.regex'=>['The : attribute field cannot contain numbers.'],]);
+        // if ($validator->fails()) {
+        //     // Validation failed
+        //     dd($request);
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
+
+
+
 }

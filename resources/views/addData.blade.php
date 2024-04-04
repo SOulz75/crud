@@ -23,6 +23,9 @@
                         <div class="mb-3">
                             <label for="forName" class="form-label">Name</label>
                             <input type="text" name="name" class="form-control" id="forName">
+                            @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="forGender">Choose your gender:</label>
@@ -34,6 +37,9 @@
                         <div class="mb-3">
                             <label for="forNoPhone" class="form-label">Phone No</label>
                             <input type="text" name="notelephone" class="form-control" id="forNoPhone">
+                            @error('notelephone')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="forProfilePicture" class="form-label">Add Profile Picture</label>
