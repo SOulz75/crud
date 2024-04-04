@@ -61,7 +61,7 @@
                         <td>{{  $row->created_at->format('D M Y') }}</td>
                         <td>
                             <a href="/showDataEmployee/{{ $row->id  }}" class="btn btn-warning">Edit</a>
-                            <a href="#" class="btn btn-danger delete" data-id="{{ $row->id }}" data-name="{{ $row->name }}">Delete </a>
+                            <a href="/deleteDataEmployee/{{ $row->id  }}" class="btn btn-danger delete" data-id="{{ $row->id }}" data-name="{{ $row->name }}">Delete </a>
                             <!--<a href="/deleteDataEmployee/{{-- $row->id --}}" class="btn btn-danger">Delete </a>-->
                         </td>
                       </tr>
