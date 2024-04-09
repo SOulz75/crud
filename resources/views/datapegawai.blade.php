@@ -61,7 +61,7 @@
                         <td>{{  $row->created_at->format('D M Y') }}</td>
                         <td>
                             <a href="/showDataEmployee/{{ $row->id  }}" class="btn btn-warning">Edit</a>
-                            <a href="/deleteDataEmployee/{{ $row->id  }}" class="btn btn-danger delete" data-id="{{ $row->id }}" data-name="{{ $row->name }}">Delete </a>
+                            <a href="#" class="btn btn-danger delete" data-id="{{ $row->id }}" data-name="{{ $row->name }}">Delete </a>
                             <!--<a href="/deleteDataEmployee/{{-- $row->id --}}" class="btn btn-danger">Delete </a>-->
                         </td>
                       </tr>
@@ -73,10 +73,71 @@
                   {{ $data->links() }}
                 </div>
         </div>
-
     </div>
 
-
+    {{-- <script
+  src="https://code.jquery.com/jquery-3.7.1.slim.js"
+  integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
+  crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.slim.js"
+  integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
+  crossorigin="anonymous"></script>
+</body>
+<script>
+    $('.delete').click(function(){
+        var empId = $(this.attr('data-id'));
+        var empName = $(this.attr('data-name'));
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this "+empName+" file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = "/deleteDataEmployee/"+empId+""
+                swal("Poof! "+empName+" file has been deleted!", {
+                icon: "success",
+            });
+            } else {
+                swal("Your imaginary file is safe!");
+            }
+        })
+    });
+</script> --}}
       <!-- /.content-header -->
+@endsection
 
+@section('sjsweetalert')
+
+
+<script>
+  $('.delete').click(function(){
+        console.log('masuk ka juga?');
+    //   var empId = $(this.attr('data-id'));
+    //   var empName = $(this.attr('data-name'));
+      var empId = $(this).attr('data-id');
+      var empName = $(this).attr('data-name');
+      swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this "+empName+" file!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+      })
+      .then((willDelete) => {
+          if (willDelete) {
+              window.location = "/deleteDataEmployee/"+empId+""
+              swal("Poof! "+empName+" file has been deleted!", {
+              icon: "success",
+          });
+          } else {
+              swal("Your imaginary file is safe!");
+          }
+      })
+  });
+</script>
 @endsection

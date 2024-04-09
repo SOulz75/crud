@@ -171,6 +171,7 @@
 
         </div><!-- /.row --> --}}
         @yield('content')
+
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -210,10 +211,48 @@
 <script src="{{  asset('template/plugins/jquery-mapael/maps/usa_states.min.js')}}"></script>
 <!-- ChartJS -->
 <script src="{{  asset('template/plugins/chart.js/Chart.min.js')}}"></script>
-
 <!-- AdminLTE for demo purposes -->
 <script src="{{  asset('template/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{  asset('')}}dist/js/pages/dashboard2.js"></script>
+<script
+src="https://code.jquery.com/jquery-3.7.1.slim.js"
+integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
+crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@yield('sjsweetalert')
+
+{{-- <script src="{{  asset('')}}dist/js/pages/dashboard2.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.slim.js"
+  integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
+  crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.slim.js"
+  integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
+  crossorigin="anonymous"></script>
 </body>
+<script>
+    $('.delete').click(function(){
+        var empId = $(this.attr('data-id'));
+        var empName = $(this.attr('data-name'));
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this "+empName+" file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = "/deleteDataEmployee/"+empId+""
+                swal("Poof! "+empName+" file has been deleted!", {
+                icon: "success",
+            });
+            } else {
+                swal("Your imaginary file is safe!");
+            }
+        })
+    });
+</script> --}}
 </html>
