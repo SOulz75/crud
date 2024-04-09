@@ -74,44 +74,9 @@
                 </div>
         </div>
     </div>
-
-    {{-- <script
-  src="https://code.jquery.com/jquery-3.7.1.slim.js"
-  integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
-  crossorigin="anonymous"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script
-  src="https://code.jquery.com/jquery-3.7.1.slim.js"
-  integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
-  crossorigin="anonymous"></script>
-</body>
-<script>
-    $('.delete').click(function(){
-        var empId = $(this.attr('data-id'));
-        var empName = $(this.attr('data-name'));
-        swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this "+empName+" file!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                window.location = "/deleteDataEmployee/"+empId+""
-                swal("Poof! "+empName+" file has been deleted!", {
-                icon: "success",
-            });
-            } else {
-                swal("Your imaginary file is safe!");
-            }
-        })
-    });
-</script> --}}
-      <!-- /.content-header -->
 @endsection
 
-@section('sjsweetalert')
+@section('script')
 
 
 <script>
@@ -135,9 +100,17 @@
               icon: "success",
           });
           } else {
-              swal("Your imaginary file is safe!");
+              swal("Deletion aborted!");
           }
       })
   });
 </script>
+
+{{-- Toaster --}}
+<script>
+    @if(Session::has('success'))
+        toastr.success("{{ Session::get('success') }}")
+    @endif
+</script>
+
 @endsection
