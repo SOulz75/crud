@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Models\Employee;
@@ -52,3 +54,9 @@ Route::get('/exportExcel', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/loginProcess', [LoginController::class, 'loginProcess'])->name('loginProcess');
+
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::post('/create', [RegisterController::class, 'create'])->name('create');

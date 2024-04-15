@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use Illuminate\Contracts\Pagination\Paginator;
 // use Barryvdh\DomPDF\PDF;
-use Illuminate\Http\Request;;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use PDF;
 
