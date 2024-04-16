@@ -51,15 +51,15 @@ class LoginController extends Controller
     public function loginProcess(Request $request){
         //
         if(Auth::attempt($request->only('email', 'password'))){
-            return redirect('/pegawai');
+            return redirect('/dashboard')->with('success', 'Login Success!');
         }
         else
-            return redirect('/login');
+            return redirect('/login')->with('success', 'Invalid data entered');
     }
 
     public function logout(){
         Auth::logout();
-        return redirect('/login');
+        return redirect('/login')->with('success', 'Log Out Success');
 
     }
     // public function registerNewUser(Request $request){
