@@ -56,6 +56,12 @@ class LoginController extends Controller
         else
             return redirect('/login');
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('/login');
+
+    }
     // public function registerNewUser(Request $request){
     //     // dd($request->all());
     //     User::create([

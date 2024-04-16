@@ -55,8 +55,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/login', [LoginController::class, 'login'])->name('login');
+//login
+Route::get('/login', [LoginController::class, 'login'])->name('login'); //login linking
 Route::get('/loginProcess', [LoginController::class, 'loginProcess'])->name('loginProcess');
 
-Route::get('/register', [LoginController::class, 'register'])->name('register');
+//register
+Route::get('/register', [LoginController::class, 'register'])->name('register'); //register linking
 Route::post('/create', [RegisterController::class, 'create'])->name('create');
+
+//logout
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout'); //logout linking
