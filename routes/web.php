@@ -19,8 +19,10 @@ use App\User;
 |
 */
 
+Route::get('/dashboard',[EmployeeController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 })->middleware('auth');;
 
 //Show data emp
@@ -46,6 +48,8 @@ Route::get('/exportPDF',[EmployeeController::class, 'exportPDF'])->name('exportP
 // Export PDF
 //Route::get('/exportExcel',[EmployeeController::class, 'exportExcel'])->name('exportExcel');
 
+
+//Export Excel Files
 Route::get('/exportExcel', function () {
     //$okay= Employee::all();
     //return (new FastExcel($okay))->export('file.xlsx');
@@ -68,8 +72,8 @@ Route::post('/create', [RegisterController::class, 'create'])->name('create');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth'); //logout linking
 
 //function for count total?
-Route::get('/countingEmp', function () {
-    $totalEmployee = Employee::count();
-    $totalManEmp = Employee::where('gender', 'man')->count();
-    $totalWomanEmp = Employee::where('gender', 'woman')->count();
-})->middleware('auth');;
+// Route::get('/countingEmp', function () {
+//     $totalEmployee = Employee::count();
+//     $totalManEmp = Employee::where('gender', 'man')->count();
+//     $totalWomanEmp = Employee::where('gender', 'woman')->count();
+// })->middleware('auth');;

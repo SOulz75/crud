@@ -89,4 +89,10 @@ class EmployeeController extends Controller
         $pdf = PDF::loadView('employeedetails-pdf');
         return $pdf->download('data.pdf');
     }
+    public function dashboard(){
+        $totEmp = Employee::all()->count();
+        $totManEmp = Employee::where('gender', 'man')->count();
+        $totWomEmp = Employee::where('gender', 'woman')->count();
+        return view('dashboard', compact('totEmp', 'totManEmp', 'totWomEmp'));
+    }
 }
