@@ -23,10 +23,10 @@ class CreateTasksTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('taskTitle');
-            $table->string('taskPoint');
+            $table->string('taskType');
             $table->string('taskRemarks');
-            $table->timestamp('taskTimeStart')->now();
-            $table->timestamp('taskTimeEnd');
+            $table->date('taskTimeStart');
+            $table->date('taskTimeEnd');
             $table->string('taskDesignation');
         });
     }

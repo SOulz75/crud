@@ -93,7 +93,7 @@
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       {{-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
-      <span class="brand-text font-weight-light"> AdminLTE 3</span>
+      <span class="brand-text font-weight-light"><center>Task <strong>X</strong> Force</center></span>
     </a>
 
     <!-- Sidebar -->
@@ -104,7 +104,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div> --}}
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+          <a href="#" class="d-block" position:'center' >{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -142,6 +142,14 @@
               </p>
             </a>
             </li>
+            <li class="nav-item">
+                <a href="/showTask" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    Task Listing
+                  </p>
+                </a>
+                </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -215,6 +223,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
 <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+
+
 
 
 @yield('script')
