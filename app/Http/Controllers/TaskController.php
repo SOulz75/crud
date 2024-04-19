@@ -34,23 +34,23 @@ class TaskController extends Controller
 
         $data = Task::create($request->all());
 
-        return redirect()->route('showTask')->with('success', 'Task has been generate successfully');
+        return redirect()->route('taskData')->with('success', 'Task has been generate successfully');
     }
 
-    public function showTask($id){
+    public function showAllTask($id){
         $data = Task::find($id);
-        return view('showTask', compact('data'));
+        return view('taskData', compact('data'));
     }
 
     public function updateTask(Request $request, $id){
         $data = Task::find($id);
         $data->update($request->all());
-        return redirect()->route('showTask')->with('success', 'Task has been update.');
+        return redirect()->route('taskData')->with('success', 'Task has been update.');
     }
     public function deleteTask($id){
         $data = Task::find($id);
         $data->delete();
-        return redirect()->route('showTask')->with('success', 'Task has been deleted.');
+        return redirect()->route('taskData')->with('success', 'Task has been deleted.');
     }
     // public function designationPerson(Request $request, $id){
     //     $data = Employee::find($id);

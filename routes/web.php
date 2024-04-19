@@ -43,29 +43,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/exportPDF', [EmployeeController::class, 'exportPDF'])->name('exportPDF');
 
 
-    //LoginController Admin
-    //Login
-    Route::get('/login', [LoginController::class, 'login'])->name('login'); //login linking
-    Route::get('/loginProcess', [LoginController::class, 'loginProcess'])->name('loginProcess');
-    //register
-    Route::get('/register', [LoginController::class, 'register'])->name('register'); //register linking
-    Route::post('/create', [RegisterController::class, 'create'])->name('create');
-    //logout
-    Route::get('/logout', [LoginController::class, 'logout'])->name('logout'); //logout linking
-
-
-    //TaskController Admin
+    //TaskController -  Admin
     //Show all task data
-    Route::get('/showTask', [TaskController::class, 'index'])->name('showTask');
+    Route::get('/taskData', [TaskController::class, 'index'])->name('taskData');
     //Add task data
     Route::get('/addTask', [TaskController::class, 'addTask'])->name('addTask');
     //Funct insert task data into db
     Route::post('/insertTask', [TaskController::class, 'insertTask'])->name('insertTask');
     //Edit Data
-    Route::get('/showTaskDetails/{id}', [TaskController::class, 'showTaskDetails'])->name('showTaskDetails');
-    Route::post('/updateTaskDetails/{id}', [TaskController::class, 'updateTaskDetails'])->name('updateTaskDetails');
+    Route::get('/showTask/{id}', [TaskController::class, 'showTask'])->name('showTask');
+    Route::post('/updateTask/{id}', [TaskController::class, 'updateTask'])->name('updateTask');
     //Delete Data
-    Route::get('/deleteTaskDetails/{id}', [TaskController::class, 'deleteTaskDetails'])->name('deleteTaskDetails');
+    Route::get('/deleteTask/{id}', [TaskController::class, 'deleteTask'])->name('deleteTask');
     //Export PDF Data Emp
     Route::get('/exportPDFTask', [TaskController::class, 'exportPDFTask'])->name('exportPDFTask');
 
@@ -79,6 +68,15 @@ Route::get('/exportExcel', function () {
     return (new FastExcel(Employee::all()))->download('file.xlsx');
 })->middleware('auth');;
 
+ //LoginController Admin
+    //Login
+    Route::get('/login', [LoginController::class, 'login'])->name('login'); //login linking
+    Route::get('/loginProcess', [LoginController::class, 'loginProcess'])->name('loginProcess');
+    //register
+    Route::get('/register', [LoginController::class, 'register'])->name('register'); //register linking
+    Route::post('/create', [RegisterController::class, 'create'])->name('create');
+    //logout
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout'); //logout linking
 
 
 

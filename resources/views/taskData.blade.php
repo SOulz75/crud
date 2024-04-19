@@ -11,7 +11,7 @@
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Task </li>
+                <li class="breadcrumb-item active">List of Task</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -20,7 +20,7 @@
     <div class="content-main">
         <div class="container-fluid">
             <div class="mb-3">
-                <form action="/" method="GET" enctype="multipart/form-data">
+                <form action="/taskData" method="GET" enctype="multipart/form-data">
                     <label for="searchTask" class="form-label">Search by title: <input type="search" class="form-control" name="search"></label>
                 </form>
                 <a href="/addTask" type="button" class="btn btn-success" > Add Task + </a>
@@ -56,8 +56,8 @@
                         <td>{{  $row->taskTitle  }}</td>
                         <td>{{  $row->taskType    }}</td>
                         <td>{{  $row->taskRemarks   }}</td>
-                        <td>{{  $row->taskTimeStart->format('D M Y')  }}</td>
-                        <td>{{ $row->taskTimeEnd->format('D M Y') }}</td>
+                        <td>{{  $row->taskTimeStart  }}</td>
+                        <td>{{ $row->taskTimeEnd }}</td>
                         <td>{{  $row->taskDesignation   }}</td>
                         <td>
                             <a href="/showTaskDetails/{{ $row->id  }}" class="btn btn-warning">Edit</a>
