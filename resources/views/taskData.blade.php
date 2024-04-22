@@ -21,19 +21,78 @@
         <div class="container-fluid">
             <div class="mb-3">
                 <form action="/taskData" method="GET" enctype="multipart/form-data">
-                    <label for="searchTask" class="form-label">Search by title: <input type="search" class="form-control" name="search"></label>
+                    <label for="searchTask" class="form-control float-right">Search by title: <input type="search" class="form-control" name="search"></label>
                 </form>
                 <a href="/addTask" type="button" class="btn btn-success" > Add Task + </a>
                 {{-- <a href="/exportPDF" type="button" class="btn btn-info" > Export PDF </a>
                 <a href="/exportExcel" type="button" class="btn btn-primary" > Export Excel </a> --}}
             </div>
-            <div class ="row">
-            {{-- @if ($message = Session::get('success'))
-                <div class="alert alert-success" role="alert">
-                    {{  $message  }}
+            <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title">Fixed Header Table</h3>
+
+                      <div class="card-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                          <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                          <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                              <i class="fas fa-search"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0" style="height: 300px;">
+                      <table class="table table-head-fixed text-nowrap">
+                        <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Title</th>
+                              <th scope="col">Details</th>
+                              <th scope="col">Remarks</th>
+                              <th scope="col">Task Start</th>
+                              <th scope="col">Task End</th>
+                              <th scope="col">Person In-Charge</th>
+                              <th scope="col">Options</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          @php
+                              $i=1;
+                          @endphp
+                          @foreach ($data as  $index=> $row)
+                          <tr>
+                              <th scope="row">{{ $index  + $data->firstItem()}}</th>
+                              <td>{{  $row->taskTitle  }}</td>
+                              <td>{{  $row->taskType    }}</td>
+                              <td>{{  $row->taskRemarks   }}</td>
+                              <td>{{  $row->taskTimeStart  }}</td>
+                              <td>{{ $row->taskTimeEnd }}</td>
+                              <td>{{  $row->taskDesignation   }}</td>
+                              <td>
+                                  <a href="/showTask/{{ $row->id  }}" class="btn btn-warning">Edit</a>
+                                  <a href="#" class="btn btn-danger delete" data-id="{{ $row->id }}" data-name="{{ $row->taskTitle }}">Delete </a>
+                                  <!--<a href="/deleteDataEmployee/{{-- $row->id --}}" class="btn btn-danger">Delete </a>-->
+                              </td>
+                            </tr>
+                          </tbody>
+
+                          @endforeach
+                      </table>
+                      {{ $data->links() }}
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
                 </div>
-            @endif --}}
-                <table class="table">
+              </div>
+
+            {{-- <div class ="row">
+                <table class="table table-head-fixed text-nowrap">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -62,7 +121,6 @@
                         <td>
                             <a href="/showTaskDetails/{{ $row->id  }}" class="btn btn-warning">Edit</a>
                             <a href="#" class="btn btn-danger delete" data-id="{{ $row->id }}" data-name="{{ $row->taskTitle }}">Delete </a>
-                            <!--<a href="/deleteDataEmployee/{{-- $row->id --}}" class="btn btn-danger">Delete </a>-->
                         </td>
                       </tr>
                     </tbody>
@@ -71,7 +129,7 @@
 
                   </table>
                   {{ $data->links() }}
-                </div>
+            </div> --}}
         </div>
     </div>
 @endsection

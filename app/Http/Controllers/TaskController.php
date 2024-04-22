@@ -37,10 +37,18 @@ class TaskController extends Controller
         return redirect()->route('taskData')->with('success', 'Task has been generate successfully');
     }
 
-    public function showAllTask($id){
+
+    // public function showAllTask($id){
+    //     $data = Task::find($id);
+    //     return view('taskData', compact('data'));
+    // }
+
+    public function showTask($id){
         $data = Task::find($id);
-        return view('taskData', compact('data'));
+        // $data = Employee::find($id);
+        return view('showTask', compact('data'));
     }
+
 
     public function updateTask(Request $request, $id){
         $data = Task::find($id);
