@@ -50,12 +50,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/addTask', [TaskController::class, 'addTask'])->name('addTask');
     //Funct insert task data into db
     Route::post('/insertTask', [TaskController::class, 'insertTask'])->name('insertTask');
-    //Edit Data
+    //Edit Task
     Route::get('/showTask/{id}', [TaskController::class, 'showTask'])->name('showTask');
     Route::post('/updateTask/{id}', [TaskController::class, 'updateTask'])->name('updateTask');
-    //Delete Data
+    //Delete task
     Route::get('/deleteTask/{id}', [TaskController::class, 'deleteTask'])->name('deleteTask');
-    //Export PDF Data Emp
+    //Export PDF task
     Route::get('/exportPDFTask', [TaskController::class, 'exportPDFTask'])->name('exportPDFTask');
 
 
