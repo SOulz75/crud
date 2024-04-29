@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\Task;
 use Illuminate\Contracts\Pagination\Paginator;
 // use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
@@ -93,6 +94,13 @@ class EmployeeController extends Controller
         $totEmp = Employee::all()->count();
         $totManEmp = Employee::where('gender', 'man')->count();
         $totWomEmp = Employee::where('gender', 'woman')->count();
-        return view('dashboard', compact('totEmp', 'totManEmp', 'totWomEmp'));
+        //
+        $totTask = Task::all()->count();
+        $task = Task::all();
+        // $initialTime = $task->taskTimeStart;
+        // $finalTime = $task->taskTimeEnd;
+        // $countTime = $finalTime - $initialTime;
+
+        return view('dashboard', compact( 'totEmp', 'totManEmp', 'totWomEmp', 'totTask', 'task'));
     }
 }
